@@ -9,9 +9,9 @@ public class InsertSort {
 	public static void main(String[] args) {
 		//int[] arr = {101, 34, 119, 1, -1, 89};
 		// 创建要给80000个的随机的数组
-		int[] arr = new int[80000];
-		for (int i = 0; i < 80000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // 生成一个[0, 8000000) 数
+		int[] arr = new int[8];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (int) (Math.random() * arr.length); // 生成一个[0, 8000000) 数
 		}
 
 		System.out.println("插入排序前");
@@ -20,13 +20,13 @@ public class InsertSort {
 		String date1Str = simpleDateFormat.format(data1);
 		System.out.println("排序前的时间是=" + date1Str);
 
-		insertSort(arr); //调用插入排序算法
+		insertSort2(arr); //调用插入排序算法
 
 		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
 		System.out.println("排序前的时间是=" + date2Str);
 
-		//System.out.println(Arrays.toString(arr));
+		System.out.println(Arrays.toString(arr));
 
 
 
@@ -35,8 +35,8 @@ public class InsertSort {
 
 	//插入排序
 	public static void insertSort(int[] arr) {
-		int insertVal = 0;
-		int insertIndex = 0;
+		int insertVal = 0;//要插入的值
+		int insertIndex = 0;//这个位置上的值要插入到前面
 		//使用for循环来把代码简化
 		for(int i = 1; i < arr.length; i++) {
 			//定义待插入的数
@@ -62,6 +62,31 @@ public class InsertSort {
 			//System.out.println("第"+i+"轮插入");
 			//System.out.println(Arrays.toString(arr));
 		}
+
+
+	}
+    //插入排序 自己写的
+    public static void insertSort2(int[] arr) {
+        int index = 0;
+        int value = 0;
+        for (int i = 1; i < arr.length; i++) {
+
+            index = i;
+            value = arr[i];
+
+            while (index >= 0 && arr[index - 1] > value) {
+                arr[index] = arr[index - 1];
+                index--;
+            }
+
+            if (i != index) {
+                arr[index] = value;
+            }
+        }
+    }
+
+
+
 
 
 		/*
@@ -119,6 +144,5 @@ public class InsertSort {
 		System.out.println("第3轮插入");
 		System.out.println(Arrays.toString(arr)); */
 
-	}
 
 }

@@ -1,4 +1,4 @@
-package com.poi.data.structure.and.algorithm.atguigu.sort2;
+package com.poi.data.structure.and.algorithm.atguigu.sort;
 
 import java.util.Arrays;
 
@@ -96,12 +96,12 @@ public class SortUtil {
         /*int[] array = {5, 6, 3, 1, 8, 7, 2, 4};
         int[] ints = insertionSort(array);*/
         //希尔排序
-        int[] array = {80, 93, 60, 12, 42, 30, 68, 85, 10};
-        int[] ints = shellSort(array);
+        /*int[] array = {80, 93, 60, 12, 42, 30, 68, 85, 10};
+        int[] ints = shellSort(array);*/
 
         //归并排序
-        /*int[] array = {5, 2, 4, 6, 1, 3, 2, 6};
-        int[] ints = mergeSort(array);*/
+        int[] array = {5, 2, 4, 6, 1, 3, 2, 6};
+        int[] ints = mergeSort(array);
         System.out.println(ints);
 
     }
