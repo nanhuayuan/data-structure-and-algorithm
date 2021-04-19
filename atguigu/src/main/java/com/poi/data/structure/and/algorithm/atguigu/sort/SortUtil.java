@@ -102,7 +102,7 @@ public class SortUtil {
         //归并排序
         int[] array = {5, 2, 4, 6, 1, 3, 2, 6};
         int[] ints = mergeSort(array);
-        System.out.println(ints);
+        System.out.println(Arrays.toString(ints));
 
     }
     //希尔排序

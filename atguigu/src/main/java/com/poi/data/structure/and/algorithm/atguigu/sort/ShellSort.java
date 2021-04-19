@@ -29,6 +29,10 @@ public class ShellSort {
 		System.out.println("排序前的时间是=" + date2Str);
 
 		//System.out.println(Arrays.toString(arr));
+		System.out.println("小灰开始");
+		int[] array = {5, 3, 9, 12, 6, 1, 7, 2, 4, 11, 8, 10};
+		sort(array);
+		System.out.println(Arrays.toString(array));
 	}
 
 	// 使用逐步推导的方式来编写希尔排序
@@ -129,5 +133,38 @@ public class ShellSort {
 			}
 		}
 	}
+
+	//小灰算法
+	public static void sort(int [] array) {
+		//希尔排序的增量
+		int d = array.length;
+		while (d > 1) {
+			//使用希尔增量的方式，即每次折半
+			d = d / 2;
+			System.out.println("这次的步长-d:" + d);
+			//各组各自排序 0- (d-1组)
+			for (int x = 0; x < d; x++) {
+				System.out.println("这次第的组号-x:" + x);
+				//开始的时候-组内的第二个数-开始插入排序(往前插)
+				for (int i = x + d; i < array.length; i = i + d) {
+					System.out.println("i:" + i);
+					int temp = array[i];
+					int j;//开始的时候 组内第一个数
+					for (j = i - d; j >= 0 && array[j] > temp; j = j - d) {
+						System.out.println("j:" + j);
+						array[j + d] = array[j];
+						array[j + d] = temp;
+					}
+				}
+			}
+		}
+	}
+/*
+	public static void main(String [] args){
+		int[] array = {5, 3, 9, 12, 6, 1, 7, 2, 4, 11, 8, 10};
+		sort(array);
+		System.out.println(Arrays.toString(array));
+	}
+*/
 
 }

@@ -113,9 +113,12 @@ public class SortUtil {
         int gap = 1;
         while (gap < arr.length) {
             gap = gap * 3 + 1;
+            System.out.println("gap膨胀:" + gap);
         }
 
         while (gap > 0) {
+            System.out.println("gap缩减:" + gap);
+
             for (int i = gap; i < arr.length; i++) {
                 int tmp = arr[i];
                 int j = i - gap;
