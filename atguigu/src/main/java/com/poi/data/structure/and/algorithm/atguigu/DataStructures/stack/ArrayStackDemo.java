@@ -1,4 +1,4 @@
-package com.poi.data.structure.and.algorithm.atguigu.stack;
+package com.poi.data.structure.and.algorithm.atguigu.DataStructures.stack;
 
 import java.util.Scanner;
 

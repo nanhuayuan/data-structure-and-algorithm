@@ -1,4 +1,4 @@
-package com.poi.data.structure.and.algorithm.atguigu.stack;
+package com.poi.data.structure.and.algorithm.atguigu.DataStructures.stack;
 
 /**
  * @author poi 2021/2/28 20:44

@@ -1,4 +1,4 @@
-package com.poi.data.structure.and.algorithm.atguigu.sort2;
+package com.poi.data.structure.and.algorithm.atguigu.DataStructures.sort2;
 
 import java.util.Arrays;
 
