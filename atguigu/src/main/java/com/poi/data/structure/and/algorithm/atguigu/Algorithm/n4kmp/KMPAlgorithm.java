@@ -11,7 +11,7 @@ public class KMPAlgorithm {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        String str1 = "BBC ABCDAB ABCDABCDABDE";
+        /*String str1 = "BBC ABCDAB ABCDABCDABDE";
         String str2 = "ABCDABD";
         //String str2 = "BBC";
 
@@ -19,7 +19,11 @@ public class KMPAlgorithm {
         System.out.println("next=" + Arrays.toString(next));
 
         int index = kmpSearch(str1, str2, next);
-        System.out.println("index=" + index); // 15了
+        System.out.println("index=" + index); // 15了*/
+
+
+        String str2 = "ABCDABD";
+        int[] next = getNext(str2);
 
 
     }
@@ -71,6 +75,33 @@ public class KMPAlgorithm {
                 j++;
             }
             next[i] = j;
+        }
+        return next;
+    }
+
+
+    public static int[] getNext(String dest) {
+        int pLen = dest.length();
+        int[] next = new int[pLen];
+        next[0] = -1;
+        int k = -1;
+        int j = 0;
+        while (j < pLen - 1)
+        {
+            //p[k]表示前缀，p[j]表示后缀
+            //k值为-1意味着前面没有匹配的,当前位置(j)的值可以确定了(就是0)
+            //这句话意味着可以确定next数组当前位置(j)的值
+            if (k == -1 || dest.charAt(j) == dest.charAt(k)) {
+                ++k;
+                ++j;
+                next[j] = k;
+            }
+            //如果当前不匹配,继续往前找
+            //为什么能往前找,因为这个是固定的字符串,开头都是一定的例如开头AB,就是开头AB,只用找不断往前找已经匹配过了的
+            //为什么不一个往前找?
+            else {
+                k = next[k];
+            }
         }
         return next;
     }
