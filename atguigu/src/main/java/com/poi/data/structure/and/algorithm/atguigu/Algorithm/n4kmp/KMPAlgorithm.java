@@ -105,5 +105,42 @@ public class KMPAlgorithm {
         }
         return next;
     }
+
+
+
+    //优化过后的next 数组求法
+    //不该出现p[j] = p[ next[j] ]。
+    // 为什么呢？理由是：当p[j] != s[i] 时，下次匹配必然是p[ next [j]] 跟s[i]匹配，
+    // 如果p[j] = p[ next[j] ]，必然导致后一步匹配失败（因为p[j]已经跟s[i]失配，
+    // 然后你还用跟p[j]等同的值p[next[j]]去跟s[i]匹配，很显然，必然失配）
+
+    public static void GetNextval(String dest)
+    {
+        int pLen = dest.length();
+        int[] next = new int[pLen];
+        int k = -1;
+        int j = 0;
+        while (j < pLen - 1)
+        {
+            //p[k]表示前缀，p[j]表示后缀
+            if (k == -1 || dest.charAt(j) == dest.charAt(k))
+            {
+                ++j;
+                ++k;
+                //较之前next数组求法，改动在下面4行
+                if (dest.charAt(j) == dest.charAt(k))
+                    next[j] = k;   //之前只有这一行
+                else
+                    //因为不能出现p[j] = p[ next[j ]]，所以当出现时需要继续递归，k = next[k] = next[next[k]]
+                    next[j] = next[k];
+            }
+            else
+            {
+                k = next[k];
+            }
+        }
+    }
+
+
 }
 
