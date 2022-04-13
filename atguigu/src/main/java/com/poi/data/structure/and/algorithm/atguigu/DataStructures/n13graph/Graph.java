@@ -72,7 +72,7 @@ public class Graph {
 
     }
 
-    //得到第一个邻接结点的下标 w
+    //得到某个节点第一个邻接结点的下标 w
     /**
      *
      * @param index
@@ -86,7 +86,7 @@ public class Graph {
         }
         return -1;
     }
-    //根据前一个邻接结点的下标来获取下一个邻接结点
+    //获得某个节点,在指定接节点之后的下一个邻接结点的位置
     public int getNextNeighbor(int v1, int v2) {
         for(int j = v2 + 1; j < vertexList.size(); j++) {
             if(edges[v1][j] > 0) {

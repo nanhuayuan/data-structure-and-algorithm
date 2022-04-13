@@ -6,6 +6,16 @@ import java.util.Arrays;
  * @author poi 2021/4/27 22:42
  * @version 1.0
  * 2021/4/27 22:42
+ *
+ * 迪杰斯特拉算法和普里姆算法类似,都是分为选和不选,利用贪心算法,每次选取最小路径
+ * 基于贪婪算法的思想，从起点出发，逐步找到通向终点的最短距离
+ *  整体操作可以分为步操作
+ * 第一步，更新列表信息。
+ *  当每加入一个新的节点，则更新所有位于未选顶点集合中且与该顶点相连的顶点的距离信息。
+ *  具体就是当新节点的距离加边的全指小于对应节点当前的距离时，则更新对应节点距离和父亲列表的信息。否则维持不变。
+ * 第二步，扫描距离列表信息，找到所有未学顶点集合中距离最小的那个顶点。
+ * 大家注意观察该节点儿总是处在靠近已选顶点集合的边缘位置。这也就是前面提到由静即乐思想的一种体现。
+ * 第三步，添加该顶点到已选顶点集合，然后作为新的节点重复第一步的操作。
  */
 public class DijkstraAlgorithm {
 
@@ -65,6 +75,7 @@ class Graph {
     public void dsj(int index) {
         vv = new VisitedVertex(vertex.length, index);
         update(index);//更新index顶点到周围顶点的距离和前驱顶点
+        //j并无实际意义,仅表示需要循环次数
         for(int j = 1; j <vertex.length; j++) {
             index = vv.updateArr();// 选择并返回新的访问顶点
             update(index); // 更新index顶点到周围顶点的距离和前驱顶点
@@ -150,6 +161,7 @@ class VisitedVertex {
 
     /**
      * 继续选择并返回新的访问顶点， 比如这里的G 完后，就是 A点作为新的访问顶点(注意不是出发顶点)
+     * 找到未访问,最小距离的点,加入到已访问集合
      * @return
      */
     public int updateArr() {
@@ -168,7 +180,6 @@ class VisitedVertex {
     //显示最后的结果
     //即将三个数组的情况输出
     public void show() {
-
         System.out.println("==========================");
         //输出already_arr
         for(int i : already_arr) {
